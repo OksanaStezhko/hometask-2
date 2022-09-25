@@ -1,29 +1,54 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Container from '../components/Container'
 import Section from '../components/Sections'
 import Button from '../components/Button'
 import Table from '../components/Table'
 import { useSelector } from 'react-redux'
 import { sumNotes, formattedNotes } from '../tools/utils'
-import { schemeNotes, schemeNoteButtons, schemeNotesHeaderButtons } from '../schemes/schemaNotes'
-import { schemeSummary, schemeSummaryButtons, schemeSummaryHeaderButtons } from '../schemes/schemaSummary'
+import { buttonNames } from '../tools/variables'
+import * as schemesNotes from '../schemes/schemesNotes'
+import * as schemesSummary from '../schemes/schemesSummary'
+import { useDispatch } from 'react-redux'
+import {
+  addNote,
+  editNote,
+  deleteNote,
+  deleteAllNotes,
+  toggleArchiveNote,
+} from '../store/notesSlice'
 
 const Home = () => {
-  const [showArchive, setShowArchive] = useState(false)
+  const dispatch = useDispatch()
+  const [toggleViewArchived, setToggleViewArchived] = useState(false)
   const notes = useSelector((state) => state.notes.notes)
-  const filteredArray = notes.filter((elem) => elem.archived === showArchive)
+  const filteredArray = notes.filter(
+    (elem) => elem.archived === toggleViewArchived
+  )
   const formattedArray = formattedNotes(filteredArray)
-  const summary = sumNotes(filteredArray)
+  const summary = sumNotes(notes)
+  const actionsNotes = {
+    [buttonNames.toggleView]: () => setToggleViewArchived(!toggleViewArchived),
+    [buttonNames.deleteAll]: () => dispatch(deleteAllNotes()),
+    [buttonNames.delete]: (id) => dispatch(deleteNote(id)),
+    [buttonNames.toggleArchive]: (id) => dispatch(toggleArchiveNote(id)),
+  }
 
   return (
     <Container>
-        <Section>
-        <Table data={formattedArray} schemeRow={schemeNotes}  schemeHeaderButtons={schemeNotesHeaderButtons} schemeRowButtons={schemeNoteButtons} />
-      </Section>
-      <Button />
       <Section>
+        <Table
+          data={formattedArray}
+          schemes={schemesNotes}
+          actions={actionsNotes}
+        />
+      </Section>
+      <Link to="/note/new">
+        <Button />
+      </Link>
 
-      <Table data={summary} schemeRow={schemeSummary}  schemeHeaderButtons={schemeSummaryHeaderButtons} schemeRowButtons={schemeSummaryButtons} />
+      <Section>
+        <Table data={summary} schemes={schemesSummary} />
       </Section>
     </Container>
   )

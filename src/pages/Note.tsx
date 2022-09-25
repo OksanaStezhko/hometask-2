@@ -1,7 +1,5 @@
-
-
-const Note = ()=>{
-    return <div></div>
+const Note = () => {
+  return <div>Новая запись</div>
 }
 
 export default Note

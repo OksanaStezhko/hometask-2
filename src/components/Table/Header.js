@@ -1,10 +1,10 @@
-import styles from './Table.module.css'
 import Action from './Action'
 
 import classNames from 'classnames/bind'
+import styles from './Table.module.css'
 let cx = classNames.bind(styles)
 
-const Header = ({ scheme, option }) => {
+const Header = ({ scheme, option, actions }) => {
   return (
     <ul className={styles.line}>
       {scheme.map((elem) => (
@@ -12,7 +12,7 @@ const Header = ({ scheme, option }) => {
           {elem.view}
         </li>
       ))}
-      <Action option={option} />
+      <Action option={option} actions={actions} />
     </ul>
   )
 }

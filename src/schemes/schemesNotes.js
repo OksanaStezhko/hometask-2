@@ -1,4 +1,6 @@
-export const schemeNotes = [
+import { buttonNames } from '../tools/variables'
+
+export const schemeData = [
   { name: 'image', view: '', width: 'small' },
   { name: 'name', view: 'Name', width: 'middle' },
   { name: 'created', view: 'Created', width: 'small' },
@@ -7,6 +9,13 @@ export const schemeNotes = [
   { name: 'dates', view: 'Dates', width: 'large' },
 ]
 
-export const schemeNoteButtons = ['edit', 'archived', 'delete']
+export const schemeButtons = [
+  buttonNames.edit,
+  buttonNames.toggleArchive,
+  buttonNames.delete,
+]
 
-export const schemeNotesHeaderButtons = ['archived', 'delete']
+export const schemeHeaderButtons = [
+  buttonNames.toggleView,
+  buttonNames.deleteAll,
+]

@@ -1,15 +1,20 @@
 import React from 'react'
-import cx from 'classnames'
-
 import Header from './Header'
 import List from './List'
 
 
-const Table = ({data, schemeRow, schemeHeaderButtons, schemeRowButtons}) => {
+import classNames from 'classnames/bind'
+import styles from './Table.module.css'
+let cx = classNames.bind(styles)
+
+
+const Table = ({data, schemes, actions}) => {
+  const {schemeData, schemeButtons, schemeHeaderButtons}  = schemes;
+
   return (
     <div>
-      <Header scheme={schemeRow} option={schemeHeaderButtons} />
-      <List scheme={schemeRow} option={schemeRowButtons} data={data} />
+      <Header scheme={schemeData} option={schemeHeaderButtons} actions = {actions} />
+      <List scheme={schemeData} option={schemeButtons} data={data} actions = {actions}/>
     </div>
   )
 }

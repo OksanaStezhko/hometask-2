@@ -1,8 +1,11 @@
-// export const sectionTypes = {
-//   notes: 'notes',
-//   summary: 'summary',
-// }
 
+export const buttonNames = {
+  edit: "edit",
+  delete: "delete",
+  deleteAll: "deleteAll",
+  toggleArchive: "toggleArchive",
+  toggleView: "toggleView"
+}
 
 export const categoryImages = {
     Task: '<i class="fa-solid fa-list button-categories"></i>',
@@ -12,8 +15,10 @@ export const categoryImages = {
   };
 
   export const buttonImages = {
-    edit:  `<i class='fa-solid fa-pencil notes__line__button-edit'>`,
-    delete: ` <i class='fa-solid fa-trash-can'></i>`,
-    archived: ` <i class='fa-solid fa-box-archive'></i>`
+    [buttonNames.edit]:  `<i class='fa-solid fa-pencil'  data-action = 'edit'></i>`,
+    [buttonNames.delete]: ` <i class='fa-solid fa-trash-can' data-action = 'delete'></i>`,
+    [buttonNames.deleteAll]: ` <i class='fa-solid fa-trash-can' data-action = 'deleteAll'></i>`,
+    [buttonNames.toggleArchive]: ` <i class='fa-solid fa-box-archive' data-action = 'toggleArchive'></i>`,
+    [buttonNames.toggleView]: ` <i class='fa-solid fa-box-archive' data-action = 'toggleView'></i>`
   }
 
