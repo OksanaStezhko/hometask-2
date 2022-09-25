@@ -2,11 +2,11 @@ import { buttonNames } from '../tools/variables'
 
 export const schemeData = [
   { name: 'image', view: '', width: 'small' },
-  { name: 'name', view: 'Name', width: 'middle' },
-  { name: 'created', view: 'Created', width: 'small' },
-  { name: 'category', view: 'Category', with: 'middle' },
-  { name: 'content', view: 'Content', width: 'large' },
-  { name: 'dates', view: 'Dates', width: 'large' },
+  { name: 'name', view: 'Name', width: 'large' },
+  { name: 'created', view: 'Created', width: 'middle' },
+  { name: 'category', view: 'Category', width: 'large' },
+  { name: 'content', view: 'Content', width: 'grow' },
+  { name: 'dates', view: 'Dates', width: 'grow' },
 ]
 
 export const schemeButtons = [
@@ -16,6 +16,6 @@ export const schemeButtons = [
 ]
 
 export const schemeHeaderButtons = [
-  buttonNames.toggleView,
+  buttonNames.toggleShow,
   buttonNames.deleteAll,
 ]

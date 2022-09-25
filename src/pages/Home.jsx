@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Container from '../components/Container'
 import Section from '../components/Sections'
@@ -11,24 +10,28 @@ import * as schemesNotes from '../schemes/schemesNotes'
 import * as schemesSummary from '../schemes/schemesSummary'
 import { useDispatch } from 'react-redux'
 import {
-  addNote,
-  editNote,
   deleteNote,
   deleteAllNotes,
   toggleArchiveNote,
 } from '../store/notesSlice'
 
+import { toggleShowArchive } from '../store/showArchive'
+
 const Home = () => {
   const dispatch = useDispatch()
-  const [toggleViewArchived, setToggleViewArchived] = useState(false)
   const notes = useSelector((state) => state.notes.notes)
+  const showArchivedNotes = useSelector((state) => state.showArchive.show)
+
   const filteredArray = notes.filter(
-    (elem) => elem.archived === toggleViewArchived
+    (elem) => elem.archived === showArchivedNotes
   )
   const formattedArray = formattedNotes(filteredArray)
+
   const summary = sumNotes(notes)
+
   const actionsNotes = {
-    [buttonNames.toggleView]: () => setToggleViewArchived(!toggleViewArchived),
+    [buttonNames.toggleShow]: () => dispatch(toggleShowArchive()),
+
     [buttonNames.deleteAll]: () => dispatch(deleteAllNotes()),
     [buttonNames.delete]: (id) => dispatch(deleteNote(id)),
     [buttonNames.toggleArchive]: (id) => dispatch(toggleArchiveNote(id)),
@@ -36,14 +39,14 @@ const Home = () => {
 
   return (
     <Container>
-      <Section>
+      <Section width={'full'} height={'stretch'}>
         <Table
           data={formattedArray}
           schemes={schemesNotes}
           actions={actionsNotes}
         />
       </Section>
-      <Link to="/note/new">
+      <Link to="/new">
         <Button />
       </Link>
 

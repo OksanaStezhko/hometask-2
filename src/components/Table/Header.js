@@ -6,7 +6,7 @@ let cx = classNames.bind(styles)
 
 const Header = ({ scheme, option, actions }) => {
   return (
-    <ul className={styles.line}>
+    <ul className={styles.header}>
       {scheme.map((elem) => (
         <li key={elem.name} className={cx('item', elem.width)}>
           {elem.view}

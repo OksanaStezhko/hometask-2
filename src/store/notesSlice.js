@@ -9,17 +9,16 @@ const noteSlice = createSlice({
   },
   reducers: {
     addNote(state, action) {
-      state.notes = [...state.notes, { id: createID(), ...action.payload }]
+      state.notes = [...state.notes, action.payload]
     },
     editNote(state, action) {
       state.notes = [
-        ...state.notes.filter((note) => note.id !== action.payload),
+        ...state.notes.filter((note) => note.id !== action.payload.id),
         action.payload,
       ]
     },
     deleteNote(state, action) {
       state.notes = state.notes.filter((note) => {
-        console.log(note.id === action.payload)
         return note.id !== action.payload
       })
     },

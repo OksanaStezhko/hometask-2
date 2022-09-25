@@ -10,7 +10,11 @@ const Line = ({ row, option, scheme, actions }) => {
     <ul className={styles.line}>
       {scheme.map((elem) => (
         <li key={elem.name} className={cx('item', elem.width)}>
-          {elem.name === 'image' ? parse(row.image) : row[elem.name]}
+          {elem.name === 'image' ? (
+            parse(row.image)
+          ) : (
+            <span className={styles['item-text']}>{row[elem.name]}</span>
+          )}
         </li>
       ))}
       <Action option={option} actions={actions} id={row.id} />

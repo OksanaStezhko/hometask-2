@@ -1,4 +1,17 @@
-.section{
-    background-color: #fff;
-    flex-grow: 1;
+.section {
+  padding: 10px;
+  background-color: #fff;
+
+  border-radius: 4px;
+  -webkit-box-shadow: 5px 4px 17px 0px rgba(87, 126, 156, 0.31);
+  -moz-box-shadow: 5px 4px 17px 0px rgba(87, 126, 156, 0.31);
+  box-shadow: 5px 4px 17px 0px rgba(87, 126, 156, 0.31);
+}
+
+.section.full {
+  width: 100%;
+}
+
+.section.stretch {
+  flex-grow: 1;
 }
