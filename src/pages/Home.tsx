@@ -77,7 +77,7 @@ const Home = () => {
           }}
         />
       </Section>
-      <Link to="/new">
+      <Link to="/hometask-2/new">
         <Button />
       </Link>
 

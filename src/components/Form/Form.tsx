@@ -39,7 +39,7 @@ const Form = ({
   const [content, setContent] = useState(note.content)
 
   const navigate = useNavigate()
-  const goHome = () => navigate('/', { replace: true })
+  const goHome = () => navigate('/hometask-2/', { replace: true })
 
   const dispatch = useAppDispatch()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

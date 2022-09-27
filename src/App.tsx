@@ -9,9 +9,9 @@ import './App.css'
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/edit/:id" element={<EditNote />}></Route>
-      <Route path="/new" element={<NewNote />}></Route>
+      <Route path="/hometask-2/" element={<Home />}></Route>
+      <Route path="/hometask-2/edit/:id" element={<EditNote />}></Route>
+      <Route path="/hometask-2/new" element={<NewNote />}></Route>
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
   )

@@ -23,7 +23,7 @@ const Action: React.FC<IProps> = ({ actions, id }) => {
           return (
             <Link
               key={name}
-              to={`/edit/${id}`}
+              to={`/hometask-2/edit/${id}`}
               className={
                 showArchivedNotes
                   ? cx('button-link', 'disabled')
@@ -37,43 +37,6 @@ const Action: React.FC<IProps> = ({ actions, id }) => {
         return action && <ButtonAction name={name} action={action} id={id} />
       })}
     </li>
-    // <li key={'buttons'} className={styles.actions}>
-    //   {actions.map((elem) => {
-    //     const image = buttonImages[elem.name]
-    //     if (elem.name === 'edit') {
-    //       return (
-    //         <Link
-    //           key={elem.name}
-    //           to={`/edit/${id}`}
-    //           className={
-    //             showArchivedNotes
-    //               ? cx('button-link', 'disabled')
-    //               : styles['button-link']
-    //           }
-    //         >
-    //           <button
-    //             className={
-    //               showArchivedNotes
-    //                 ? cx('button-link', 'disabled')
-    //                 : styles['button-link']
-    //             }
-    //           >
-    //             {image ? parse(image) : elem.name}
-    //           </button>
-    //         </Link>
-    //       )
-    //     }
-    //     return (
-    //       <button
-    //         key={elem.name}
-    //         onClick={elem.action ? () => elem.action(id) : undefined}
-    //         className={styles['button-link']}
-    //       >
-    //         {image ? parse(image) : elem.name}
-    //       </button>
-    //     )
-    //   })}
-    // </li>
   )
 }
 
