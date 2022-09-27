@@ -1,11 +1,15 @@
-import styles from './Section.module.css';
+import classNames from 'classnames/bind'
+import styles from './Section.module.css'
+let cx = classNames.bind(styles)
 
-interface Props {
-  children: JSX.Element[]|JSX.Element
+interface IProps {
+  children: JSX.Element[] | JSX.Element
+  width?: 'normal' | 'full'
+  height?: 'normal' | 'stretch'
 }
 
-const Section = ({ children }:Props) => {
-  return <section className={styles.section}>{children}</section>
+const Section = ({ children, width = 'normal', height = 'normal' }: IProps) => {
+  return <section className={cx('section', width, height)}>{children}</section>
 }
 
-export default Section;
+export default Section

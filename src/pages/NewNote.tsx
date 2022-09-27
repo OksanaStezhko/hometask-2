@@ -1,13 +1,14 @@
+import Form from '../components/Form'
 import Container from '../components/Container'
 import Title from '../components/Title'
 
-const NotFound = () => {
+const NewNote = () => {
   return (
     <Container>
-      <Title text={'Error!'} type={'error'} />
-      <p>Page not found!</p>
+      <Title text={'New note'} />
+      <Form />
     </Container>
   )
 }
 
-export default NotFound
+export default NewNote
