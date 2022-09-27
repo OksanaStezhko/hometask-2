@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hometask-2/static/css/main.6c06b01f.css",
+    "main.js": "/hometask-2/static/js/main.627d781c.js",
+    "index.html": "/hometask-2/index.html",
+    "main.6c06b01f.css.map": "/hometask-2/static/css/main.6c06b01f.css.map",
+    "main.627d781c.js.map": "/hometask-2/static/js/main.627d781c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c06b01f.css",
+    "static/js/main.627d781c.js"
+  ]
+}
