@@ -2,13 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 
 //I added showArchive to the store to save value when navigating pages without LocalStorage
 
+type TStateShowArchive = {
+  show: boolean
+}
+
+const initialState: TStateShowArchive = { show: false }
+
 const showArchiveSlice = createSlice({
   name: 'showArchive',
-  initialState: {
-    show: false,
-  },
+  initialState,
   reducers: {
-    toggleShowArchive(state, action) {
+    toggleShowArchive(state) {
       state.show = !state.show
     },
   },

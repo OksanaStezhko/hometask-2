@@ -1,10 +1,10 @@
 import styles from './Container.module.css'
 
-interface Props {
+interface IProps {
   children: JSX.Element[]
 }
 
-const Container = ({ children }:Props) => {
+const Container = ({ children }: IProps) => {
   return <div className={styles.container}>{children}</div>
 }
 

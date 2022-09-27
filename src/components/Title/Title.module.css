@@ -3,3 +3,7 @@
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+
+.title.error {
+  color: red;
+}

@@ -1,10 +1,15 @@
-import Action from './Action'
-
+import ActionHeader from './ActionHeader'
+import { TActionsHeader, TColumns } from '../../type'
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
 
-const Header = ({ scheme, option, actions }) => {
+interface IProps {
+  scheme: TColumns[]
+  actions?: TActionsHeader[] | undefined
+}
+
+const Header: React.FC<IProps> = ({ scheme, actions }) => {
   return (
     <ul className={styles.header}>
       {scheme.map((elem) => (
@@ -12,7 +17,7 @@ const Header = ({ scheme, option, actions }) => {
           {elem.view}
         </li>
       ))}
-      <Action option={option} actions={actions} />
+      {actions && <ActionHeader actions={actions} />}
     </ul>
   )
 }

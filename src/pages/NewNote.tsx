@@ -6,7 +6,7 @@ const NewNote = () => {
   return (
     <Container>
       <Title text={'New note'} />
-      <Form></Form>
+      <Form />
     </Container>
   )
 }

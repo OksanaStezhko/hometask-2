@@ -1,24 +1,36 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { v4 as createID } from 'uuid'
 import moment from 'moment'
 
+import { useAppDispatch } from '../../hook'
 import { editNote, addNote } from '../../store/notesSlice'
+import { categories } from '../../tools/variables'
+import { TCategories } from '../../type'
 import classNames from 'classnames/bind'
 import styles from './Form.module.css'
 
 let cx = classNames.bind(styles)
 
+interface IProps {
+  note?: {
+    id: string
+    name: string
+    category: string
+    content: string
+    created: string
+  }
+}
+
 const Form = ({
   note = {
     id: createID(),
     name: '',
-    category: 'Task',
+    category: categories.Task,
     content: '',
     created: moment().format('YYYY-MM-DD'),
   },
-}) => {
+}: IProps) => {
   let location = useLocation().pathname.slice(1).split('/')[0]
 
   const idNote = note.id
@@ -30,8 +42,8 @@ const Form = ({
   const navigate = useNavigate()
   const goHome = () => navigate('/', { replace: true })
 
-  const dispatch = useDispatch()
-  const handleSubmit = (event) => {
+  const dispatch = useAppDispatch()
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const newNote = {
       id: idNote,
@@ -51,7 +63,7 @@ const Form = ({
   }
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <dir className={styles.data}>
+      <div className={styles.data}>
         <label className={styles.label}>
           <span className={styles.labelName}>Name:</span>
           <textarea
@@ -85,10 +97,12 @@ const Form = ({
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           >
-            <option value="Task">Task</option>
-            <option value="Random Thought">Random Thought</option>
-            <option value="Idea">Idea</option>
-            <option value="Quote">Quote</option>
+            <option value="Task">{categories.Task}</option>
+            <option value="Random Thought">
+              {categories['Random Thought']}
+            </option>
+            <option value="Idea">{categories.Idea}</option>
+            <option value="Quote">{categories.Quote}</option>
           </select>
         </label>
         <label className={styles.label}>
@@ -96,22 +110,22 @@ const Form = ({
           <textarea
             className={styles.input}
             name="comment"
-            rows="4"
+            rows={4}
             value={content}
             required
             onChange={(event) => setContent(event.target.value)}
           ></textarea>
         </label>
-      </dir>
+      </div>
 
-      <dir className={styles.footer}>
+      <div className={styles.footer}>
         <button className={styles.button} type="button" onClick={goHome}>
           Back to notes
         </button>
         <button className={styles.button} type="submit">
           Save
         </button>
-      </dir>
+      </div>
     </form>
   )
 }

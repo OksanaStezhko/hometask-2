@@ -41,6 +41,11 @@
   border-radius: 50%;
 }
 
+.item-text {
+  display: block;
+  overflow-wrap: break-word;
+}
+
 i {
   color: #fff;
 }

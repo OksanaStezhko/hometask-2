@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
+import { useAppSelector } from '../hook'
 import Form from '../components/Form'
 import Container from '../components/Container'
 import Title from '../components/Title'
-import { useSelector } from 'react-redux'
 
 const EditNote = () => {
-  const notes = useSelector((state) => state.notes.notes)
+  const notes = useAppSelector((state) => state.notes.notes)
   const { id } = useParams()
   const editedNote = notes.find((elem) => elem.id === id)
 
