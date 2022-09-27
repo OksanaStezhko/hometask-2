@@ -2,6 +2,7 @@
   "name": "hometask-2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://oksanastezhko.github.io/hometask-2/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@types/jest": "^27.5.2",
