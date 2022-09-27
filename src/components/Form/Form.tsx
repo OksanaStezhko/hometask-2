@@ -6,7 +6,6 @@ import moment from 'moment'
 import { useAppDispatch } from '../../hook'
 import { editNote, addNote } from '../../store/notesSlice'
 import { categories } from '../../tools/variables'
-import { TCategories } from '../../type'
 import classNames from 'classnames/bind'
 import styles from './Form.module.css'
 
