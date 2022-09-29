@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import ActionHeader from './ActionHeader'
 import { TActionsHeader, TColumns } from '../../type'
+import { tableContext } from './Table'
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
@@ -9,7 +11,9 @@ interface IProps {
   actions?: TActionsHeader[] | undefined
 }
 
-const Header: React.FC<IProps> = ({ scheme, actions }) => {
+const Header = () => {
+  const options = useContext(tableContext)
+  const { scheme, actionsHeader } = options
   return (
     <ul className={styles.header}>
       {scheme.map((elem) => (
@@ -17,7 +21,7 @@ const Header: React.FC<IProps> = ({ scheme, actions }) => {
           {elem.view}
         </li>
       ))}
-      {actions && <ActionHeader actions={actions} />}
+      {actionsHeader && <ActionHeader actions={actionsHeader} />}
     </ul>
   )
 }

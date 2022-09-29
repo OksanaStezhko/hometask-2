@@ -24,32 +24,26 @@ const formattedNotes = (arr: TData[]): TFormattedData[] => {
 }
 
 const sumNotes = (arrInit: TData[]): TSummary[] | [] => {
-  const arrRes = arrInit.reduce(
-    (acc: TSummary[] | [], elem: TData, idx: number, array: TData[]) => {
-      const isInArr = acc.find(
-        (item: TSummary) => item.category === elem.category
-      )
-      let newItem: TSummary
+  const arrRes = arrInit.reduce((acc, elem) => {
+    const isInArr = acc.find((item) => item.category === elem.category)
 
-      if (isInArr) {
-        if (elem.archived) {
-          isInArr.archived += 1
-        } else {
-          isInArr.active += 1
-        }
-        return acc
+    if (isInArr) {
+      if (elem.archived) {
+        isInArr.archived += 1
+      } else {
+        isInArr.active += 1
       }
-      newItem = {
-        id: elem.category,
-        category: elem.category,
-        active: +!elem.archived,
-        archived: +elem.archived,
-        image: categoryImages[elem.category],
-      }
-      return [...acc, newItem]
-    },
-    [] as TSummary[] | []
-  )
+      return acc
+    }
+    const newItem = {
+      id: elem.category,
+      category: elem.category,
+      active: +!elem.archived,
+      archived: +elem.archived,
+      image: categoryImages[elem.category],
+    }
+    return [...acc, newItem]
+  }, [] as TSummary[] | [])
   return arrRes
 }
 

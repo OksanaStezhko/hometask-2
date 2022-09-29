@@ -1,24 +1,15 @@
+import { useContext } from 'react'
 import parse from 'html-react-parser'
 import Action from './Action'
-import {
-  TFormattedData,
-  TSummary,
-  TActionsRow,
-  TColumnsNote,
-  TColumnsSummary,
-} from '../../type'
+import { tableContext } from './Table'
 
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
 
-// type TProps<T> = {
-//   row: T
-//   scheme: T extends TFormattedData ? TColumnsNote[] : TColumnsSummary[]
-//   actions?: T extends TFormattedData ? TActionsRow[] : undefined
-// }
-
-const Line = ({ row, scheme, actions }) => {
+const Line = ({ row }) => {
+  const options = useContext(tableContext)
+  const { scheme, actionsRow } = options
   return (
     <ul className={styles.line}>
       {scheme.map(({ name, width }) => (
@@ -30,7 +21,7 @@ const Line = ({ row, scheme, actions }) => {
           )}
         </li>
       ))}
-      {actions && <Action actions={actions} id={row.id} />}
+      {actionsRow && <Action id={row.id} />}
     </ul>
   )
 }

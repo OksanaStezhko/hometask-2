@@ -21,16 +21,23 @@ interface IProps {
   options: TProps<TFormattedData[] | TSummary[]>
 }
 
+interface IOptions {
+  data: TFormattedData[] | TSummary[]
+  scheme: TColumnsNote[] | TColumnsSummary[]
+  actionsRow?: TActionsRow[] | undefined
+  actionsHeader?: TActionsHeader[] | undefined
+}
+
+export const tableContext = React.createContext<IOptions>({} as IOptions)
+
 const Table: React.FC<IProps> = ({ options }) => {
   return (
-    <div>
-      <Header scheme={options.scheme} actions={options.actionsHeader} />
-      <List
-        scheme={options.scheme}
-        data={options.data}
-        actions={options.actionsRow}
-      />
-    </div>
+    <tableContext.Provider value={options}>
+      <div>
+        <Header />
+        <List />
+      </div>
+    </tableContext.Provider>
   )
 }
 

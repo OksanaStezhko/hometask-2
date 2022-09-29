@@ -10,7 +10,7 @@ const ActionHeader: React.FC<IProps> = ({ actions }) => {
   return (
     <li key={'buttons'} className={styles.actions}>
       {actions.map(({ name, action }) => {
-        return <ButtonAction name={name} action={action} />
+        return <ButtonAction name={name} action={action} key={name} />
       })}
     </li>
   )

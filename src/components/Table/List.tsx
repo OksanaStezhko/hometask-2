@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import Line from './Line'
 import {
   TFormattedData,
@@ -6,6 +7,7 @@ import {
   TColumnsNote,
   TColumnsSummary,
 } from '../../type'
+import { tableContext } from './Table'
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
@@ -16,15 +18,13 @@ type TProps<T> = {
   actions?: T extends TFormattedData[] ? TActionsRow[] : undefined
 }
 
-const List: React.FC<TProps<TFormattedData[] | TSummary[]>> = ({
-  scheme,
-  data,
-  actions,
-}) => {
+const List = () => {
+  const options = useContext(tableContext)
+  const { data } = options
   return (
     <ul>
       {data.map((row) => {
-        return <Line scheme={scheme} row={row} key={row.id} actions={actions} />
+        return <Line key={row.id} row={row} />
       })}
     </ul>
   )
