@@ -3,7 +3,6 @@ import { useAppSelector } from '../../hook'
 import { Link } from 'react-router-dom'
 import ButtonAction from './ButtonAction'
 import ButtonLink from './ButtonLink'
-import { TActionsRow } from '../../type'
 import { tableContext } from './Table'
 
 import classNames from 'classnames/bind'
