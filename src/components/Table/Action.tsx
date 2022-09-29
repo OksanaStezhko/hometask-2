@@ -18,33 +18,33 @@ const Action = ({ id }: IProps) => {
   const showArchivedNotes = useAppSelector((state) => state.showArchive.show)
   const options = useContext(tableContext)
   const { actionsRow } = options
-  return (
-    actionsRow && (
-      <li key={'buttons'} className={styles.actions}>
-        {actionsRow.map(({ name, action }) => {
-          if (name === 'edit') {
-            return (
-              <Link
-                key={name}
-                to={`/hometask-2/edit/${id}`}
-                className={
-                  showArchivedNotes
-                    ? cx('button-link', 'disabled')
-                    : styles['button-link']
-                }
-              >
-                <ButtonLink name={name} />
-              </Link>
-            )
-          }
+  return actionsRow ? (
+    <li key={'buttons'} className={styles.actions}>
+      {actionsRow.map(({ name, action }) => {
+        if (name === 'edit') {
           return (
-            action && (
-              <ButtonAction name={name} action={action} id={id} key={name} />
-            )
+            <Link
+              key={name}
+              to={`/hometask-2/edit/${id}`}
+              className={
+                showArchivedNotes
+                  ? cx('button-link', 'disabled')
+                  : styles['button-link']
+              }
+            >
+              <ButtonLink name={name} />
+            </Link>
           )
-        })}
-      </li>
-    )
+        }
+        return (
+          action && (
+            <ButtonAction name={name} action={action} id={id} key={name} />
+          )
+        )
+      })}
+    </li>
+  ) : (
+    <></>
   )
 }
 

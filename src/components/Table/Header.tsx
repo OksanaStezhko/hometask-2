@@ -21,7 +21,7 @@ const Header = () => {
           {elem.view}
         </li>
       ))}
-      {actionsHeader && <ActionHeader actions={actionsHeader} />}
+      {actionsHeader && <ActionHeader />}
     </ul>
   )
 }

@@ -1,18 +1,24 @@
+import { useContext } from 'react'
 import ButtonAction from './ButtonAction'
 import { TActionsHeader } from '../../type'
+import { tableContext } from './Table'
 import styles from './Table.module.css'
 
 interface IProps {
   actions: TActionsHeader[]
 }
 
-const ActionHeader: React.FC<IProps> = ({ actions }) => {
-  return (
+const ActionHeader = () => {
+  const options = useContext(tableContext)
+  const { actionsHeader } = options
+  return actionsHeader ? (
     <li key={'buttons'} className={styles.actions}>
-      {actions.map(({ name, action }) => {
+      {actionsHeader.map(({ name, action }) => {
         return <ButtonAction name={name} action={action} key={name} />
       })}
     </li>
+  ) : (
+    <></>
   )
 }
 
