@@ -4,6 +4,7 @@ import Section from '../components/Sections'
 import Button from '../components/Button'
 import Table from '../components/Table'
 import Title from '../components/Title'
+import Comment from '../components/Comment'
 import { useAppDispatch, useAppSelector } from '../hook'
 import {
   deleteNote,
@@ -67,6 +68,7 @@ const Home = () => {
   return (
     <Container>
       <Title text={'Notes'} />
+      <Comment />
       <Section width="full" height="stretch">
         <Table
           options={{
