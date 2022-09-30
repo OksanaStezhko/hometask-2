@@ -3,7 +3,9 @@ import { useAppSelector } from '../../hook'
 import { Link } from 'react-router-dom'
 import ButtonAction from './ButtonAction'
 import ButtonLink from './ButtonLink'
+
 import { tableContext } from './Table'
+import { path } from '../../tools/variables'
 
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
@@ -24,7 +26,7 @@ const Action = ({ id }: IProps) => {
           return (
             <Link
               key={name}
-              to={`/hometask-2/edit/${id}`}
+              to={`${path}/edit/${id}`}
               className={
                 showArchivedNotes
                   ? cx('button-link', 'disabled')

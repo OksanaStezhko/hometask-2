@@ -1,4 +1,4 @@
-import parse from 'html-react-parser'
+import ImageButton from './ImageButton'
 import { TSchemeButtonRow, TSchemeButtonHeader } from '../../type'
 import { buttonImages } from '../../tools/variables'
 import styles from './Table.module.css'
@@ -17,7 +17,7 @@ const ButtonAction: React.FC<IProps> = ({ name, action, id }) => {
       onClick={id ? () => action(id) : () => action()}
       className={styles['button-link']}
     >
-      {image ? parse(image) : name}
+      {image ? <ImageButton name={name} /> : name}
     </button>
   )
 }
