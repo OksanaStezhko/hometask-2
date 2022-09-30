@@ -1,3 +1,4 @@
+import { TColumnsNote, TColumnsSummary } from '../type'
 export const categories = {
   Task: 'Task',
   Idea: 'Idea',
@@ -20,3 +21,18 @@ export const buttonImages = {
   toggleArchive: ` <i class='fa-solid fa-box-archive'  style="color: black"></i>`,
   toggleShow: ` <i class='fa-solid fa-box-archive' ></i>`,
 }
+export const schemeNotes: TColumnsNote[] = [
+  { name: 'image', view: '', width: 'small' },
+  { name: 'name', view: 'Name', width: 'large' },
+  { name: 'created', view: 'Created', width: 'middle' },
+  { name: 'category', view: 'Category', width: 'large' },
+  { name: 'content', view: 'Content', width: 'grow' },
+  { name: 'dates', view: 'Dates', width: 'grow' },
+]
+
+export const schemeSummary: TColumnsSummary[] = [
+  { name: 'image', view: '', width: 'small' },
+  { name: 'category', view: 'Note Category', width: 'large' },
+  { name: 'active', view: 'Active', width: 'middle' },
+  { name: 'archived', view: 'Archived', width: 'middle' },
+]

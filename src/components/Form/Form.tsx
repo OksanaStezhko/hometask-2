@@ -30,7 +30,7 @@ const Form = ({
     created: moment().format('YYYY-MM-DD'),
   },
 }: IProps) => {
-  let location = useLocation().pathname.slice(1).split('/')[0]
+  let location = useLocation().pathname.slice(1).split('/')[1]
 
   const idNote = note.id
   const [name, setName] = useState(note.name)
@@ -52,6 +52,7 @@ const Form = ({
       content,
       archived: false,
     }
+
     if (location === 'new') {
       dispatch(addNote(newNote))
     }

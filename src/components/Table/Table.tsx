@@ -10,27 +10,28 @@ import {
   TColumnsSummary,
 } from '../../type'
 
-type TProps<T> = {
-  data: T
-  scheme: T extends TFormattedData[] ? TColumnsNote[] : TColumnsSummary[]
-  actionsRow?: T extends TFormattedData[] ? TActionsRow[] : undefined
-  actionsHeader?: T extends TFormattedData[] ? TActionsHeader[] : undefined
+interface IOptions {
+  data: TFormattedData[] | TSummary[]
+  scheme: TColumnsNote[] | TColumnsSummary[]
+  actionsRow?: TActionsRow[] | never
+  actionsHeader?: TActionsHeader[] | never
 }
 
-interface IProps {
-  options: TProps<TFormattedData[] | TSummary[]>
-}
+export const tableContext = React.createContext<IOptions>({} as IOptions)
 
-const Table: React.FC<IProps> = ({ options }) => {
+const Table: React.FC<IOptions> = ({
+  data,
+  scheme,
+  actionsRow,
+  actionsHeader,
+}) => {
   return (
-    <div>
-      <Header scheme={options.scheme} actions={options.actionsHeader} />
-      <List
-        scheme={options.scheme}
-        data={options.data}
-        actions={options.actionsRow}
-      />
-    </div>
+    <tableContext.Provider value={{ data, scheme, actionsRow, actionsHeader }}>
+      <div>
+        <Header />
+        <List />
+      </div>
+    </tableContext.Provider>
   )
 }
 

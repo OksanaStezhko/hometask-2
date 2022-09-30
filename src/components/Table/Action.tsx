@@ -1,8 +1,9 @@
+import { useContext } from 'react'
 import { useAppSelector } from '../../hook'
 import { Link } from 'react-router-dom'
 import ButtonAction from './ButtonAction'
 import ButtonLink from './ButtonLink'
-import { TActionsRow } from '../../type'
+import { tableContext } from './Table'
 
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
@@ -10,15 +11,15 @@ let cx = classNames.bind(styles)
 
 interface IProps {
   id: string
-  actions: TActionsRow[]
 }
 
-const Action: React.FC<IProps> = ({ actions, id }) => {
+const Action = ({ id }: IProps) => {
   const showArchivedNotes = useAppSelector((state) => state.showArchive.show)
-
-  return (
+  const options = useContext(tableContext)
+  const { actionsRow } = options
+  return actionsRow ? (
     <li key={'buttons'} className={styles.actions}>
-      {actions.map(({ name, action }) => {
+      {actionsRow.map(({ name, action }) => {
         if (name === 'edit') {
           return (
             <Link
@@ -34,9 +35,15 @@ const Action: React.FC<IProps> = ({ actions, id }) => {
             </Link>
           )
         }
-        return action && <ButtonAction name={name} action={action} id={id} />
+        return (
+          action && (
+            <ButtonAction name={name} action={action} id={id} key={name} />
+          )
+        )
       })}
     </li>
+  ) : (
+    <></>
   )
 }
 

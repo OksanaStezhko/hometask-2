@@ -1,0 +1,13 @@
+.comment {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.comment.archived {
+  color: rgb(210, 56, 56);
+}
+
+.comment.active {
+  color: rgb(56, 56, 173);
+}
