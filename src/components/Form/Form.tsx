@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import { useAppDispatch } from '../../hook'
 import { editNote, addNote } from '../../store/notesSlice'
-import { categories } from '../../tools/variables'
+import { categories, path } from '../../tools/variables'
 import classNames from 'classnames/bind'
 import styles from './Form.module.css'
 
@@ -39,7 +39,7 @@ const Form = ({
   const [content, setContent] = useState(note.content)
 
   const navigate = useNavigate()
-  const goHome = () => navigate('/hometask-2/', { replace: true })
+  const goHome = () => navigate(`${path}/`, { replace: true })
 
   const dispatch = useAppDispatch()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

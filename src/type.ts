@@ -61,6 +61,12 @@ export type TSchemeButtonRow = 'edit' | 'toggleArchive' | 'delete'
 
 export type TSchemeButtonHeader = 'toggleShow' | 'deleteAll'
 
-export type TActionsRow = { name: TSchemeButtonRow; action?: Function }
+export type TActionsRow = {
+  name: TSchemeButtonRow
+  action?: (id: string) => { payload: string; type: string }
+}
 
-export type TActionsHeader = { name: TSchemeButtonHeader; action: Function }
+export type TActionsHeader = {
+  name: TSchemeButtonHeader
+  action: () => { payload: string | undefined; type: string }
+}

@@ -16,7 +16,7 @@ import { toggleShowArchive } from '../store/showArchiveSlice'
 import { sumNotes, formattedNotes } from '../tools/utils'
 import { TFormattedData, TSummary, TActionsRow, TActionsHeader } from '../type'
 
-import { schemeNotes, schemeSummary } from '../tools/variables'
+import { schemeNotes, schemeSummary, path } from '../tools/variables'
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -56,7 +56,7 @@ const Home = () => {
           actionsHeader={actionHeaderNote}
         />
       </Section>
-      <Link to="/hometask-2/new">
+      <Link to={`${path}+new`}>
         <Button />
       </Link>
 
