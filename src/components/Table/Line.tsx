@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import parse from 'html-react-parser'
 import Action from './Action'
+import ImageButton from './ImageButton'
 import { tableContext } from './Table'
-import { TFormattedData, TSummary } from '../../type'
+import { TFormattedData, TSummary, TCategories } from '../../type'
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
@@ -20,10 +20,11 @@ const Line = ({ row }: IProps) => {
     <ul className={styles.line}>
       {scheme.map(({ name, width }) => {
         const nameColumn = name as currentTypeColumn
+        const nameCategory = row.category as TCategories
         return (
           <li key={name} className={cx('item', width)}>
             {name === 'image' ? (
-              parse(row.image)
+              <ImageButton name={nameCategory} />
             ) : (
               <span className={styles['item-text']}>{row[nameColumn]}</span>
             )}

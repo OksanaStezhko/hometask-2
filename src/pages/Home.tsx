@@ -56,7 +56,7 @@ const Home = () => {
           actionsHeader={actionHeaderNote}
         />
       </Section>
-      <Link to={`${path}+new`}>
+      <Link to={`${path}/new`}>
         <Button />
       </Link>
 
