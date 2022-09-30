@@ -14,14 +14,9 @@ import {
 
 import { toggleShowArchive } from '../store/showArchiveSlice'
 import { sumNotes, formattedNotes } from '../tools/utils'
-import {
-  TFormattedData,
-  TSummary,
-  TActionsRow,
-  TActionsHeader,
-  TColumnsNote,
-  TColumnsSummary,
-} from '../type'
+import { TFormattedData, TSummary, TActionsRow, TActionsHeader } from '../type'
+
+import { schemeNotes, schemeSummary } from '../tools/variables'
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -49,34 +44,16 @@ const Home = () => {
     { name: 'deleteAll', action: () => dispatch(deleteAllNotes()) },
   ]
 
-  const schemeNotes: TColumnsNote[] = [
-    { name: 'image', view: '', width: 'small' },
-    { name: 'name', view: 'Name', width: 'large' },
-    { name: 'created', view: 'Created', width: 'middle' },
-    { name: 'category', view: 'Category', width: 'large' },
-    { name: 'content', view: 'Content', width: 'grow' },
-    { name: 'dates', view: 'Dates', width: 'grow' },
-  ]
-
-  const schemeSummary: TColumnsSummary[] = [
-    { name: 'image', view: '', width: 'small' },
-    { name: 'category', view: 'Note Category', width: 'large' },
-    { name: 'active', view: 'Active', width: 'middle' },
-    { name: 'archived', view: 'Archived', width: 'middle' },
-  ]
-
   return (
     <Container>
       <Title text={'Notes'} />
       <Comment />
       <Section width="full" height="stretch">
         <Table
-          options={{
-            data: formattedArray,
-            scheme: schemeNotes,
-            actionsRow: actionsRowNote,
-            actionsHeader: actionHeaderNote,
-          }}
+          data={formattedArray}
+          scheme={schemeNotes}
+          actionsRow={actionsRowNote}
+          actionsHeader={actionHeaderNote}
         />
       </Section>
       <Link to="/hometask-2/new">
@@ -84,7 +61,7 @@ const Home = () => {
       </Link>
 
       <Section>
-        <Table options={{ data: summary, scheme: schemeSummary }} />
+        <Table data={summary} scheme={schemeSummary} />
       </Section>
     </Container>
   )
