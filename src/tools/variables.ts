@@ -1,5 +1,4 @@
 import { TColumnsNote, TColumnsSummary } from '../type'
-export const path = '/hometask-2'
 
 export const categories = {
   Task: 'Task',

@@ -5,7 +5,6 @@ import ButtonAction from './ButtonAction'
 import ButtonLink from './ButtonLink'
 
 import { tableContext } from './Table'
-import { path } from '../../tools/variables'
 
 interface IProps {
   id: string
@@ -22,7 +21,7 @@ const Action = ({ id }: IProps) => {
           return (
             <Link
               key={name}
-              to={`${path}/edit/${id}`}
+              to={`/edit/${id}`}
               className={` w-full h-full mr-2 border-none bg-inherit
               ${
                 showArchivedNotes

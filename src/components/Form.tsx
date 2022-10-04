@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import { useAppDispatch } from '../hook'
 import { editNote, addNote } from '../store/notesSlice'
-import { categories, path } from '../tools/variables'
+import { categories } from '../tools/variables'
 
 interface IProps {
   note?: {
@@ -35,7 +35,7 @@ const Form = ({
   const [content, setContent] = useState(note.content)
 
   const navigate = useNavigate()
-  const goHome = () => navigate(`${path}/`, { replace: true })
+  const goHome = () => navigate(`/`, { replace: true })
 
   const dispatch = useAppDispatch()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
