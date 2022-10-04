@@ -1,12 +1,7 @@
 import { useContext } from 'react'
 import ButtonAction from './ButtonAction'
-import { TActionsHeader } from '../../type'
 import { tableContext } from './Table'
 import styles from './Table.module.css'
-
-interface IProps {
-  actions: TActionsHeader[]
-}
 
 const ActionHeader = () => {
   const options = useContext(tableContext)
