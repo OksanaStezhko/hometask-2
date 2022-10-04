@@ -1,7 +1,6 @@
 import ImageButton from './ImageButton'
 import { TSchemeButtonRow, TSchemeButtonHeader } from '../../type'
 import { buttonImages } from '../../tools/variables'
-import styles from './Table.module.css'
 
 interface IProps {
   name: TSchemeButtonRow | TSchemeButtonHeader
@@ -15,7 +14,7 @@ const ButtonAction: React.FC<IProps> = ({ name, action, id }) => {
     <button
       key={name}
       onClick={id ? () => action(id) : () => action()}
-      className={styles['button-link']}
+      className={'button-link white-button'}
     >
       {image ? <ImageButton name={name} /> : name}
     </button>

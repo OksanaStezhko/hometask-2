@@ -5,8 +5,6 @@ import EditNote from './pages/EditNote'
 import NotFound from './pages/NotFound'
 import { path } from './tools/variables'
 
-import './App.css'
-
 const App = () => {
   return (
     <Routes>

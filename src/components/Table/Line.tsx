@@ -3,9 +3,6 @@ import Action from './Action'
 import ImageButton from './ImageButton'
 import { tableContext } from './Table'
 import { TFormattedData, TSummary, TCategories } from '../../type'
-import classNames from 'classnames/bind'
-import styles from './Table.module.css'
-let cx = classNames.bind(styles)
 
 interface IProps {
   row: TFormattedData | TSummary
@@ -17,16 +14,21 @@ const Line = ({ row }: IProps) => {
 
   type currentTypeColumn = keyof typeof row
   return (
-    <ul className={styles.line}>
+    <ul className={'line'}>
       {scheme.map(({ name, width }) => {
         const nameColumn = name as currentTypeColumn
         const nameCategory = row.category as TCategories
         return (
-          <li key={name} className={cx('item', width)}>
+          <li
+            key={name}
+            className={`item ${width} ${name === 'image' && ' white-button'}`}
+          >
             {name === 'image' ? (
               <ImageButton name={nameCategory} />
             ) : (
-              <span className={styles['item-text']}>{row[nameColumn]}</span>
+              <span className={'block break-word  text-left'}>
+                {row[nameColumn]}
+              </span>
             )}
           </li>
         )

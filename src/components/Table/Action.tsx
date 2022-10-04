@@ -7,10 +7,6 @@ import ButtonLink from './ButtonLink'
 import { tableContext } from './Table'
 import { path } from '../../tools/variables'
 
-import classNames from 'classnames/bind'
-import styles from './Table.module.css'
-let cx = classNames.bind(styles)
-
 interface IProps {
   id: string
 }
@@ -20,18 +16,20 @@ const Action = ({ id }: IProps) => {
   const options = useContext(tableContext)
   const { actionsRow } = options
   return actionsRow ? (
-    <li key={'buttons'} className={styles.actions}>
+    <li key={'buttons'} className={'flex items-center justify-center'}>
       {actionsRow.map(({ name, action }) => {
         if (name === 'edit') {
           return (
             <Link
               key={name}
               to={`${path}/edit/${id}`}
-              className={
+              className={` w-full h-full mr-2 border-none bg-inherit
+              ${
                 showArchivedNotes
-                  ? cx('button-link', 'disabled')
-                  : styles['button-link']
+                  ? ' text-gray-300  pointer-events-none'
+                  : ' text-black'
               }
+              `}
             >
               <ButtonLink name={name} />
             </Link>

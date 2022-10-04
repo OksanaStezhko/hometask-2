@@ -3,13 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { v4 as createID } from 'uuid'
 import moment from 'moment'
 
-import { useAppDispatch } from '../../hook'
-import { editNote, addNote } from '../../store/notesSlice'
-import { categories, path } from '../../tools/variables'
-import classNames from 'classnames/bind'
-import styles from './Form.module.css'
-
-let cx = classNames.bind(styles)
+import { useAppDispatch } from '../hook'
+import { editNote, addNote } from '../store/notesSlice'
+import { categories, path } from '../tools/variables'
 
 interface IProps {
   note?: {
@@ -62,12 +58,17 @@ const Form = ({
     goHome()
   }
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.data}>
-        <label className={styles.label}>
-          <span className={styles.labelName}>Name:</span>
+    <form
+      className={
+        'flex flex-col w-1/2 mx-auto p-3 bg-light-blue border border-white rounded shadow-form'
+      }
+      onSubmit={handleSubmit}
+    >
+      <div className={'flex flex-col   p-6 grow-0'}>
+        <label className={'label'}>
+          <span className={'labelName'}>Name:</span>
           <textarea
-            className={styles.input}
+            className={'input'}
             name="name"
             value={name}
             required
@@ -76,10 +77,10 @@ const Form = ({
             {name}
           </textarea>
         </label>
-        <label className={styles.label}>
-          <span className={styles.labelName}> Created:</span>
+        <label className={'label'}>
+          <span className={'labelName'}> Created:</span>
           <input
-            className={cx('input', 'date')}
+            className={'input-date'}
             type="date"
             name="created"
             value={created}
@@ -87,12 +88,12 @@ const Form = ({
             required
           />
         </label>
-        <label className={styles.label}>
-          <span className={styles.labelName}> Category:</span>
+        <label className={'label'}>
+          <span className={'labelName'}> Category:</span>
           <select
             name="category"
             required
-            className={styles.input}
+            className={'input'}
             id="category-select"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
@@ -105,10 +106,10 @@ const Form = ({
             <option value="Quote">{categories.Quote}</option>
           </select>
         </label>
-        <label className={styles.label}>
-          <span className={styles.labelName}> Content:</span>
+        <label className={'label'}>
+          <span className={'labelName'}> Content:</span>
           <textarea
-            className={styles.input}
+            className={'input'}
             name="comment"
             rows={4}
             value={content}
@@ -118,11 +119,11 @@ const Form = ({
         </label>
       </div>
 
-      <div className={styles.footer}>
-        <button className={styles.button} type="button" onClick={goHome}>
+      <div className={'flex items-center justify-between p-2 w-4/5 mx-auto'}>
+        <button className={'button'} type="button" onClick={goHome}>
           Back to notes
         </button>
-        <button className={styles.button} type="submit">
+        <button className={'button'} type="submit">
           Save
         </button>
       </div>
