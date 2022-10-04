@@ -5,8 +5,6 @@ import ButtonAction from './ButtonAction'
 import ButtonLink from './ButtonLink'
 
 import { tableContext } from './Table'
-import { path } from '../../tools/variables'
-
 import classNames from 'classnames/bind'
 import styles from './Table.module.css'
 let cx = classNames.bind(styles)
@@ -26,7 +24,7 @@ const Action = ({ id }: IProps) => {
           return (
             <Link
               key={name}
-              to={`${path}/edit/${id}`}
+              to={`/edit/${id}`}
               className={
                 showArchivedNotes
                   ? cx('button-link', 'disabled')
