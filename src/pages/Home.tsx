@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Container from '../components/Container'
-import Section from '../components/Sections'
+import Section from '../components/Section'
 import Button from '../components/Button'
 import Table from '../components/Table'
 import Title from '../components/Title'
@@ -57,7 +57,7 @@ const Home = () => {
         />
       </Section>
       <Link to={`/new`}>
-        <Button />
+        <Button>Create note</Button>
       </Link>
 
       <Section>
